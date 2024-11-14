@@ -1,10 +1,10 @@
 {
     "name": "tamagotchi-game",
-    "version": "1.0.8",
+    "version": "1.0.11",
     "description": "Ein Tamagotchi-Spiel mit Node.js und HTML/CSS/JavaScript",
-    "main": "dist/server.js",
+    "main": "script.js",
     "scripts": {
-        "start": "node dist/server.js"
+        "start": "node script.js"
     },
     "author": "Christian Schade (coffeecatde)",
     "license": "MIT",
