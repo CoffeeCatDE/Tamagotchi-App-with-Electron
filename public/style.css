@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #d0ebff;
+    text-align: center;
+    padding: 0px;
+}
+#tamagotchi {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 550px;
+    margin: auto;
+}
+button {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.feed-button { background-color: #4caf50; color: white; font-size: 30px;}
+.play-button { background-color: red; color: white; font-size: 30px; }
+.sleep-button { background-color: #2196f3; color: white; font-size: 30px; }
+#avatar {
+    width: 400px;
+    height: 400px;
+    margin-top: 10px;
+}
+.status {
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+    margin-top: 5px;
+}
+.stern {
+    width: 50px;
+    height: 50px;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamagotchi-Spiel</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <div id="tamagotchi">
+        <h1>Tamagotchi</h1>
+
+        <h2>Alter: <span id="jahreAnzeige">0</span> Jahre</h2>
+
+        <button id="feed" class="feed-button">Füttern</button>
+        <button id="play" class="play-button">Spielen</button>
+        <button id="sleepButton" class="sleep-button">Schlafen</button>
+
+        <img src="images/avatar.jpg" id="avatar">
+
+        <div id="status">
+            <div>
+                <p>Hunger:</p>
+                <div id="hungerStatus" class="status"></div>
+            </div>
+            <div>
+                <p>Stimmung:</p>
+                <div id="moodStatus" class="status"></div>
+            </div>
+            <div>
+                <p>Schlaf:</p>
+                <div id="sleepStatus" class="status"></div>
+            </div>
+        </div>
+        <br />
+       
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

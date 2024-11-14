@@ -35,9 +35,9 @@ function sterneAktualisieren(elementId, wert) {
         const stern = document.createElement('img');
         stern.classList.add('stern');
         if (i < anzahlSterne) {
-            stern.src = 'bilder/sternchen.jpg'; // Bild für aktiven Stern
+            stern.src = 'images/sternchen.jpg'; // Bild für aktiven Stern
         } else {
-            stern.src = 'bilder/sternchen-leer.jpg'; // Bild für inaktiven Stern
+            stern.src = 'images/sternchen-leer.jpg'; // Bild für inaktiven Stern
         }
         container.appendChild(stern);
     }
@@ -55,7 +55,7 @@ function fuettern() {
     if (!schlaeft && lebt) {
         hunger = Math.min(hunger + 20, 100);
         stimmung = Math.min(stimmung + 10, 100);
-        avatarBild.src = "bilder/essen.jpg"; // Bild für Füttern ändern
+        avatarBild.src = "images/essen.jpg"; // Bild für Füttern ändern
         statusAktualisieren();
     }
 }
@@ -66,7 +66,7 @@ function spielen() {
         stimmung = Math.min(stimmung + 15, 100);
         hunger = Math.max(hunger - 10, 0);
         schlaf = Math.max(schlaf - 5, 0);
-        avatarBild.src = "bilder/spielen.jpg"; // Bild für Spielen ändern
+        avatarBild.src = "images/spielen.jpg"; // Bild für Spielen ändern
         statusAktualisieren();
     }
 }
@@ -76,7 +76,7 @@ function schlafen() {
     if (!schlaeft && lebt) {
         schlaeft = true;
         schlaf = 100;
-        avatarBild.src = "bilder/schlafen.jpg"; // Bild für Schlafen ändern
+        avatarBild.src = "images/schlafen.jpg"; // Bild für Schlafen ändern
         statusAktualisieren();
 
         // Nach 5 Sekunden aufwachen
@@ -87,7 +87,7 @@ function schlafen() {
 // Funktion zum Aufwachen
 function aufwachen() {
     schlaeft = false;
-    avatarBild.src = "bilder/avatar.jpg"; // Normales Bild
+    avatarBild.src = "images/avatar.jpg"; // Normales Bild
     statusAktualisieren();
 }
 
@@ -106,8 +106,7 @@ function istTot(){
     if (hunger === 0 && stimmung === 0 && schlaf === 0 && lebt){
         console.log("tot");
         lebt = false;
-        avatarBild.src = "bilder/tot.jpg"; // Bild für Füttern ändern
-
+        avatarBild.src = "images/tot.jpg"; // Bild für Füttern ändern
     }
 }
 
