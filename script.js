@@ -7,10 +7,8 @@ let avatarBild = document.getElementById('avatar');
 let lebt = true;
 let startZeit = Date.now(); // Aktuelle Zeit in Millisekunden
 let jahresDauer = 500;
-
-let intervallID_eins = setInterval(zustandVerschlechtern, 500);
-
-let intervallID_zwei = setInterval(berechneJahre, jahresDauer);
+let intervallID_verschlechtern= setInterval(zustandVerschlechtern, 500);
+let intervallID_alter = setInterval(berechneJahre, jahresDauer);
 
 
 
@@ -119,14 +117,10 @@ document.getElementById('feed').addEventListener('click', fuettern);
 document.getElementById('play').addEventListener('click', spielen);
 document.getElementById('sleepButton').addEventListener('click', schlafen);
 
-
-
-
-
 // Regelmäßiges Aufrufen der Funktion zustandVerschlechtern
 if (!lebt) {
-    clearInterval(intervallID_eins); // Stoppt das Intervall mit der gespeicherten ID
-    clearInterval(intervallID_zwei); // Stoppt das Intervall mit der gespeicherten ID
+    clearInterval(intervallID_verschlechtern); // Stoppt das Intervall mit der gespeicherten ID
+    clearInterval(intervallID_alter); // Stoppt das Intervall mit der gespeicherten ID
 }
 else {
     // Anfangsstatus anzeigen

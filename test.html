@@ -27,9 +27,9 @@
             cursor: pointer;
             font-size: 16px;
         }
-        .feed-button { background-color: #4caf50; color: white; }
-        .play-button { background-color: #2196f3; color: white; }
-        .sleep-button { background-color: #9c27b0; color: white; }
+        .feed-button { background-color: #4caf50; color: white; font-size: 30px;}
+        .play-button { background-color: red; color: white; font-size: 30px; }
+        .sleep-button { background-color: #2196f3; color: white; font-size: 30px; }
         #avatar {
             width: 300px;
             height: 300px;
@@ -42,8 +42,8 @@
             margin-top: 5px;
         }
         .star {
-            width: 20px;
-            height: 20px;
+            width: 50px;
+            height: 50px;
         }
     </style>
 </head>
@@ -51,9 +51,15 @@
 
     <div id="tamagotchi">
         <h1>Tamagotchi</h1>
-        <h1>mein Alter: <span id="jahreAnzeige">0.00</span> Jahre</h1>
+
+        <h2>Alter: <span id="jahreAnzeige">0</span> Jahre</h2>
+
+        <button id="feed" class="feed-button">Füttern</button>
+        <button id="play" class="play-button">Spielen</button>
+        <button id="sleepButton" class="sleep-button">Schlafen</button>
 
         <img src="bilder/avatar.jpg" id="avatar">
+
         <div id="status">
             <div>
                 <p>Hunger:</p>
@@ -68,9 +74,8 @@
                 <div id="sleepStatus" class="status"></div>
             </div>
         </div>
-        <button id="feed" class="feed-button">Füttern</button>
-        <button id="play" class="play-button">Spielen</button>
-        <button id="sleepButton" class="sleep-button">Schlafen</button>
+        <br />
+       
     </div>
 
     <script src="script.js"></script>
