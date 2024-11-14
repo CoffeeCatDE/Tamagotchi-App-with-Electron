@@ -4,6 +4,27 @@ let stimmung = 100;
 let schlaf = 100;
 let schlaeft = false;
 let avatarBild = document.getElementById('avatar');
+let lebt = true;
+let startZeit = Date.now(); // Aktuelle Zeit in Millisekunden
+let jahresDauer = 500;
+
+let intervallID_eins = setInterval(zustandVerschlechtern, 500);
+
+let intervallID_zwei = setInterval(berechneJahre, jahresDauer);
+
+
+
+// Funktion zur Berechnung der vergangenen Jahre
+function berechneJahre() {
+    if (lebt){
+        let jetzt = Date.now(); // Aktuelle Zeit in Millisekunden
+        let vergangeneZeitInMillisekunden = jetzt - startZeit; // Unterschied in Millisekunden
+    
+        let vergangeneSekunden = vergangeneZeitInMillisekunden / jahresDauer; // Umrechnung in Sekunden
+        let jahre = vergangeneSekunden / (60 * 60 * 24 * 365.25); // Umrechnung in Jahre (durchschnittliche Anzahl Tage in einem Jahr)
+        document.getElementById('jahreAnzeige').textContent = vergangeneSekunden.toFixed(0); // Ausgabe mit 2 Dezimalstellen  
+    }
+   }
 
 // Funktion, um die Statussterne basierend auf dem Wert (0–100) zu aktualisieren
 function sterneAktualisieren(elementId, wert) {
@@ -17,9 +38,9 @@ function sterneAktualisieren(elementId, wert) {
         const stern = document.createElement('img');
         stern.classList.add('star');
         if (i < anzahlSterne) {
-            stern.src = 'sternchen.jpg'; // Bild für aktiven Stern
+            stern.src = 'bilder/sternchen.jpg'; // Bild für aktiven Stern
         } else {
-            stern.src = 'sternchen-leer.jpg'; // Bild für inaktiven Stern
+            stern.src = 'bilder/sternchen-leer.jpg'; // Bild für inaktiven Stern
         }
         container.appendChild(stern);
     }
@@ -34,31 +55,31 @@ function statusAktualisieren() {
 
 // Funktion für die Fütterung
 function fuettern() {
-    if (!schlaeft) {
+    if (!schlaeft && lebt) {
         hunger = Math.min(hunger + 20, 100);
         stimmung = Math.min(stimmung + 10, 100);
-        avatarBild.src = "essen.jpg"; // Bild für Füttern ändern
+        avatarBild.src = "bilder/essen.jpg"; // Bild für Füttern ändern
         statusAktualisieren();
     }
 }
 
 // Funktion für das Spielen
 function spielen() {
-    if (!schlaeft) {
+    if (!schlaeft && lebt) {
         stimmung = Math.min(stimmung + 15, 100);
         hunger = Math.max(hunger - 10, 0);
         schlaf = Math.max(schlaf - 5, 0);
-        avatarBild.src = "spielen.jpg"; // Bild für Spielen ändern
+        avatarBild.src = "bilder/spielen.jpg"; // Bild für Spielen ändern
         statusAktualisieren();
     }
 }
 
 // Funktion für das Schlafen
 function schlafen() {
-    if (!schlaeft) {
+    if (!schlaeft && lebt) {
         schlaeft = true;
         schlaf = 100;
-        avatarBild.src = "schlafen.jpg"; // Bild für Schlafen ändern
+        avatarBild.src = "bilder/schlafen.jpg"; // Bild für Schlafen ändern
         statusAktualisieren();
 
         // Nach 5 Sekunden aufwachen
@@ -69,17 +90,27 @@ function schlafen() {
 // Funktion zum Aufwachen
 function aufwachen() {
     schlaeft = false;
-    avatarBild.src = "avatar_normal.jpg"; // Normales Bild
+    avatarBild.src = "bilder/avatar.jpg"; // Normales Bild
     statusAktualisieren();
 }
 
 // Funktion zur regelmäßigen Verschlechterung des Zustands
 function zustandVerschlechtern() {
-    if (!schlaeft) {
+    if (!schlaeft && lebt) {
         hunger = Math.max(hunger - 5, 0);
         stimmung = Math.max(stimmung - 3, 0);
         schlaf = Math.max(schlaf - 2, 0);
         statusAktualisieren();
+    }
+    istTot();
+}
+
+function istTot(){
+    if (hunger === 0 && stimmung === 0 && schlaf === 0 && lebt){
+        console.log("tot");
+        lebt = false;
+        avatarBild.src = "bilder/tot.jpg"; // Bild für Füttern ändern
+
     }
 }
 
@@ -88,8 +119,16 @@ document.getElementById('feed').addEventListener('click', fuettern);
 document.getElementById('play').addEventListener('click', spielen);
 document.getElementById('sleepButton').addEventListener('click', schlafen);
 
-// Regelmäßiges Aufrufen der Funktion zustandVerschlechtern
-setInterval(zustandVerschlechtern, 1000);
 
-// Anfangsstatus anzeigen
-statusAktualisieren();
+
+
+
+// Regelmäßiges Aufrufen der Funktion zustandVerschlechtern
+if (!lebt) {
+    clearInterval(intervallID_eins); // Stoppt das Intervall mit der gespeicherten ID
+    clearInterval(intervallID_zwei); // Stoppt das Intervall mit der gespeicherten ID
+}
+else {
+    // Anfangsstatus anzeigen
+    statusAktualisieren();
+}
