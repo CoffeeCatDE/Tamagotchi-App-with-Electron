@@ -9,7 +9,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Route für die Startseite
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendfile('./index.html');
+
+   // res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Server starten
