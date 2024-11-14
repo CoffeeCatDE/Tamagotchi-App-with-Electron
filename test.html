@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamagotchi-Spiel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d0ebff;
+            text-align: center;
+            padding: 20px;
+        }
+        #tamagotchi {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 550px;
+            margin: auto;
+        }
+        button {
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .feed-button { background-color: #4caf50; color: white; }
+        .play-button { background-color: #2196f3; color: white; }
+        .sleep-button { background-color: #9c27b0; color: white; }
+        #avatar {
+            width: 300px;
+            height: 300px;
+            margin-top: 10px;
+        }
+        .status {
+            display: flex;
+            justify-content: center;
+            gap: 3px;
+            margin-top: 5px;
+        }
+        .star {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="tamagotchi">
+        <h1>Tamagotchi</h1>
+        <img src="avatar.jpg" id="avatar">
+        <div id="status">
+            <div>
+                <p>Hunger:</p>
+                <div id="hungerStatus" class="status"></div>
+            </div>
+            <div>
+                <p>Stimmung:</p>
+                <div id="moodStatus" class="status"></div>
+            </div>
+            <div>
+                <p>Schlaf:</p>
+                <div id="sleepStatus" class="status"></div>
+            </div>
+        </div>
+        <button id="feed" class="feed-button">Füttern</button>
+        <button id="play" class="play-button">Spielen</button>
+        <button id="sleepButton" class="sleep-button">Schlafen</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
