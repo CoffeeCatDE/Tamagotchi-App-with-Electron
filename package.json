@@ -1,6 +1,6 @@
 {
     "name": "tamagotchi-game",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Ein Tamagotchi-Spiel mit Node.js und HTML/CSS/JavaScript",
     "main": "server.js",
     "scripts": {
