@@ -19,7 +19,6 @@ function berechneJahre() {
         let vergangeneZeitInMillisekunden = jetzt - startZeit; // Unterschied in Millisekunden
     
         let vergangeneSekunden = vergangeneZeitInMillisekunden / jahresDauer; // Umrechnung in Sekunden
-        let jahre = vergangeneSekunden / (60 * 60 * 24 * 365.25); // Umrechnung in Jahre (durchschnittliche Anzahl Tage in einem Jahr)
         document.getElementById('jahreAnzeige').textContent = vergangeneSekunden.toFixed(0); // Ausgabe mit 2 Dezimalstellen  
     }
    }
@@ -34,7 +33,7 @@ function sterneAktualisieren(elementId, wert) {
 
     for (let i = 0; i < maxSterne; i++) {
         const stern = document.createElement('img');
-        stern.classList.add('star');
+        stern.classList.add('stern');
         if (i < anzahlSterne) {
             stern.src = 'bilder/sternchen.jpg'; // Bild für aktiven Stern
         } else {
@@ -117,7 +116,7 @@ document.getElementById('feed').addEventListener('click', fuettern);
 document.getElementById('play').addEventListener('click', spielen);
 document.getElementById('sleepButton').addEventListener('click', schlafen);
 
-// Regelmäßiges Aufrufen der Funktion zustandVerschlechtern
+// Regelmäßiges Aufrufen der Funktionen
 if (!lebt) {
     clearInterval(intervallID_verschlechtern); // Stoppt das Intervall mit der gespeicherten ID
     clearInterval(intervallID_alter); // Stoppt das Intervall mit der gespeicherten ID
