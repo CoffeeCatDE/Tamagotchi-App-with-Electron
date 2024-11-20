@@ -4,12 +4,15 @@
     "description": "Ein Tamagotchi-Spiel mit Node.js und HTML/CSS/JavaScript",
     "main": "script.js",
     "scripts": {
-        "start": "node script.js"
+        "start": "electron ."
     },
     "author": "Christian Schade (coffeecatde)",
     "license": "MIT",
     "dependencies": {
         "express": "^4.21.1"
     },
-    "keywords": []
+    "keywords": [],
+    "devDependencies": {
+        "electron": "^33.2.0"
+    }
 }

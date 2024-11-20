@@ -1,9 +1,39 @@
+const electron = require('electron')
+const proc = require('node:child_process')
+
+console.log(electron)
+
+// spawn Electron
+// const child = proc.spawn(electron)
+
+const { app, BrowserWindow, document } = require('electron')
+
+const createWindow = () => {
+    const win = new BrowserWindow({
+      width: 800,
+      height: 600
+    })
+  
+    win.loadFile('index.html')
+  }
+
+  app.whenReady().then(() => {
+    createWindow()
+  })
+
+  app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') app.quit()
+  })
+
+
 // Statuswerte des Tamagotchis
 let hunger = 100;
 let stimmung = 100;
 let schlaf = 100;
 let schlaeft = false;
-let avatarBild = document.getElementById('avatar');
+
+
+let avatarBild = document?.getElementById('avatar');
 let lebt = true;
 let startZeit = Date.now(); // Aktuelle Zeit in Millisekunden
 let jahresDauer = 500;
@@ -26,22 +56,30 @@ function berechneJahre() {
 // Funktion, um die Statussterne basierend auf dem Wert (0–100) zu aktualisieren
 function sterneAktualisieren(elementId, wert) {
     const maxSterne = 5;
-    const anzahlSterne = Math.round((wert / 100) * maxSterne); // 0 bis 5 Sterne
+    const anzahlSterne = Math.round((wert / 100) * maxSterne); // Calculate how many stars to show
 
-    const container = document.getElementById(elementId);
-    container.innerHTML = ''; // Container leeren
+    const container = document?.getElementById(elementId);  // No need for optional chaining here
+    if (!container) {
+        console.error(`Container with ID ${elementId} not found`);
+        return;  // Exit if the container does not exist
+    }
+
+    container.innerHTML = '';  // Clear the previous stars
 
     for (let i = 0; i < maxSterne; i++) {
-        const stern = document.createElement('img');
-        stern.classList.add('stern');
+        const stern = document.createElement('img');  // Create a new image element
+        stern.classList.add('stern');  // Add a class to the image (for styling)
+
         if (i < anzahlSterne) {
-            stern.src = 'images/sternchen.jpg'; // Bild für aktiven Stern
+            stern.src = 'images/sternchen.jpg';  // Set the image for an active star
         } else {
-            stern.src = 'images/sternchen-leer.jpg'; // Bild für inaktiven Stern
+            stern.src = 'images/sternchen-leer.jpg';  // Set the image for an inactive star
         }
-        container.appendChild(stern);
+
+        container.appendChild(stern);  // Append the created image to the container
     }
 }
+
 
 // Funktion, um den gesamten Status zu aktualisieren
 function statusAktualisieren() {
@@ -111,9 +149,9 @@ function istTot(){
 }
 
 // Event-Listener für die Buttons
-document.getElementById('feed').addEventListener('click', fuettern);
-document.getElementById('play').addEventListener('click', spielen);
-document.getElementById('sleepButton').addEventListener('click', schlafen);
+document?.getElementById('feed').addEventListener('click', fuettern);
+document?.getElementById('play').addEventListener('click', spielen);
+document?.getElementById('sleepButton').addEventListener('click', schlafen);
 
 // Regelmäßiges Aufrufen der Funktionen
 if (!lebt) {
