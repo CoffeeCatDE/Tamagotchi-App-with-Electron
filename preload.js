@@ -6,7 +6,7 @@ let schlaf = 100;
 let schlaeft = false;
 let lebt = true;
 let startZeit = Date.now();
-let jahresDauer = 500;
+let jahresDauer = 5000;
 let intervallID_verschlechtern = setInterval(zustandVerschlechtern, 500);
 let intervallID_alter = setInterval(berechneJahre, jahresDauer);
 

@@ -10,11 +10,11 @@ window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('hunger').innerText = ` ${hungerStatus}`;
   document.getElementById('stimmung').innerText = ` ${stimmungStatus}`;
   document.getElementById('schlaf').innerText = `${schlafStatus}`;
-  document.getElementById('lebt').innerText = `${lebtStatus ? 'Ja' : 'Nein'}`;
+  // document.getElementById('lebt').innerText = `${lebtStatus ? 'Ja' : 'Nein'}`;
 
   // Falls du einen Button hast, um den Hunger zu verändern:
   document.getElementById('setHungerButton').addEventListener('click', () => {
-    window.electron.setHunger(0);  // Beispielwert
+    window.electron.setHunger(2220);  // Beispielwert
     document.getElementById('hunger').innerText = `Hunger: ${window.electron.getHunger()}`;
     document.getElementById('schlaf').innerText = `Schlaf: ${window.electron.getSchlaf()}`;
     document.getElementById('stimmung').innerText = `Stimmung: ${window.electron.getStimmung()}`;

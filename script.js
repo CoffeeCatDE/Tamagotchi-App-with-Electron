@@ -3,8 +3,8 @@ const { app, BrowserWindow, document } = require('electron');
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    width: 800,
-    height: 800,
+    width: 1920,
+    height: 900,
     lucy: "Lucy",
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),  // Point to preload.js
@@ -12,7 +12,7 @@ const createWindow = () => {
       contextIsolation: true, // Enabling context isolation for better security
     }
   });
-
+win.webContents.openDevTools()
   win.loadFile('index.html');
 };
 
