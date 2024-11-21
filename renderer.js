@@ -60,7 +60,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   // Intervall zur Altersberechnung
-  const idInterval = setInterval(werdeAelter, 123);
+  const idInterval = setInterval(werdeAelter, 100);
 
   // Event-Listener für den "Füttern"-Button
   document.getElementById("fuetternButton").addEventListener("click", () => {

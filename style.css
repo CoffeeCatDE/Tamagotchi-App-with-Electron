@@ -26,7 +26,7 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px !important;
 }
 .feed-button { background-color: var( --color-progress-hunger); color: white; font-size: 30px;}
 .play-button { background-color: var( --color-progress-spielen); color: white; font-size: 30px; }
@@ -48,12 +48,12 @@ progress {
     width: 100%; /* Breite der Progressbar */
     height: 30px; /* Höhe der Progressbar */
     border-radius: 10px; /* Abrundung der Ecken */
-    background-color: #e0e0e0; /* Hintergrundfarbe der leeren Progressbar */
+    background-color: #d0ebff; /* Hintergrundfarbe der leeren Progressbar */
 }
 
 /* Pseudo-Element für den Fortschrittswert */
 progress::-webkit-progress-bar {
-    background-color: #e0e0e0; /* Hintergrundfarbe der leeren Progressbar */
+    background-color: #d0ebff; /* Hintergrundfarbe der leeren Progressbar */
     border-radius: 10px;
 }
 
