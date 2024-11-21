@@ -49,3 +49,34 @@ button {
     background-size: cover, 100% 100%, cover;
     background-blend-mode: luminosity, multiply;
 }
+
+:root  {
+    --color-progress-hunger: blue;
+    --color-progress-stimmung: yellow;
+    --color-progress-schlaf: red;
+}
+
+/* Styling für die progressbar */
+progress {
+    width: 100%; /* Breite der Progressbar */
+    height: 30px; /* Höhe der Progressbar */
+    border-radius: 10px; /* Abrundung der Ecken */
+    background-color: var(--color-progress-hunger); /* Hintergrundfarbe */
+}
+
+/* Pseudo-Element für den Fortschrittswert */
+progress::-webkit-progress-bar {
+    background-color: #e0e0e0; /* Hellerer Hintergrund für die leere Progressbar */
+    border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+    background-color: var(--color-progress-hunger); /* Blaue Farbe für den Fortschritt */
+    border-radius: 10px;
+}
+
+/* Pseudo-Element für Firefox */
+progress::-moz-progress-bar {
+    background-color: var(--color-progress-hunger); /* Blaue Farbe für den Fortschritt */
+    border-radius: 10px;
+}

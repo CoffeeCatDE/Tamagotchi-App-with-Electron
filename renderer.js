@@ -2,41 +2,16 @@ window.addEventListener("DOMContentLoaded", () => {
   // Die Funktion für das Altern der Figur
   var avatarBild = document.getElementById("avatar");
 
-
-   // Funktion, um die Statussterne basierend auf dem Wert (0–100) zu aktualisieren
-   function sterneAktualisieren(elementId, wert) {
-    const maxSterne = 5;
-    const anzahlSterne = Math.round((wert / 100) * maxSterne); // Calculate how many stars to show
-
-    const container = document.getElementById(elementId);  // No need for optional chaining here
-    if (!container) {
-      console.error(`Container with ID ${elementId} not found`);
-      return;  // Exit if the container does not exist
-    }
-
-    container.innerHTML = '';  // Clear the previous stars
-
-    for (let i = 0; i < maxSterne; i++) {
-      const stern = document.createElement('img');  // Create a new image element
-      stern.classList.add('stern');  // Add a class to the image (for styling)
-
-      if (i < anzahlSterne) {
-        stern.src = 'images/sternchen.jpg';  // Set the image for an active star
-      } else {
-        stern.src = 'images/sternchen-leer.jpg';  // Set the image for an inactive star
-      }
-
-      container.appendChild(stern);  // Append the created image to the container
-    }
-  }
-
-
   function werdeAelter() {
 
-    var progressBar = document.getElementById("hunger");
-    progressBar.value = window.electron.getHunger();  // Setzt den Wert auf 75%
+    var progressBarHunger = document.getElementById("hunger");
+    var progressBarStimmung = document.getElementById("stimmung");
+    var progressBarSchlaf = document.getElementById("schlaf");
+    progressBarHunger.value = window.electron.getHunger();  // Setzt den Wert auf 75%
+    progressBarStimmung.value = window.electron.getStimmung();  // Setzt den Wert auf 75%
+    progressBarSchlaf.value = window.electron.getSchlaf();  // Setzt den Wert auf 75%
 
-    
+
     // Zugriff auf die exponierten Variablen aus preload.js
     const hungerStatus = window.electron.getHunger();
 
@@ -64,7 +39,6 @@ window.addEventListener("DOMContentLoaded", () => {
       window.electron.reduceStimmung();
       window.electron.reduceSchlaf();
 
-      sterneAktualisieren("hunger");
 
       // Diese Werte könnten zum Beispiel in HTML-Elemente eingefügt werden
       // document.getElementById("hunger").innerText = `${hungerStatus}`;
