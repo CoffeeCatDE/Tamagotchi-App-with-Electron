@@ -7,17 +7,7 @@ let schlaeft = false;
 let lebt = true;
 let startZeit = Date.now();
 let jahresDauer = 3000;
-// let intervallID_verschlechtern = setInterval(zustandVerschlechtern, 500);
-// let intervallID_alter = setInterval(berechneJahre, jahresDauer);
 
-
-// function berechneJahre() {
-//   if (lebt) {
-//     let vergangeneZeit = Date.now() - startZeit;
-//     let jahre = Math.floor(vergangeneZeit / (1000 * 60 * 60 * 24 * 365));
-//     console.log("Jahre vergangen: " + jahre);
-//   }
-// }
 
 contextBridge.exposeInMainWorld('electron', {
   hungerStatus: hunger,

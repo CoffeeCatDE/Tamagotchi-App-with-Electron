@@ -2,6 +2,35 @@ window.addEventListener("DOMContentLoaded", () => {
   // Die Funktion für das Altern der Figur
   var avatarBild = document.getElementById("avatar");
 
+
+   // Funktion, um die Statussterne basierend auf dem Wert (0–100) zu aktualisieren
+   function sterneAktualisieren(elementId, wert) {
+    const maxSterne = 5;
+    const anzahlSterne = Math.round((wert / 100) * maxSterne); // Calculate how many stars to show
+
+    const container = document.getElementById(elementId);  // No need for optional chaining here
+    if (!container) {
+      console.error(`Container with ID ${elementId} not found`);
+      return;  // Exit if the container does not exist
+    }
+
+    container.innerHTML = '';  // Clear the previous stars
+
+    for (let i = 0; i < maxSterne; i++) {
+      const stern = document.createElement('img');  // Create a new image element
+      stern.classList.add('stern');  // Add a class to the image (for styling)
+
+      if (i < anzahlSterne) {
+        stern.src = 'images/sternchen.jpg';  // Set the image for an active star
+      } else {
+        stern.src = 'images/sternchen-leer.jpg';  // Set the image for an inactive star
+      }
+
+      container.appendChild(stern);  // Append the created image to the container
+    }
+  }
+
+
   function werdeAelter() {
     // Zugriff auf die exponierten Variablen aus preload.js
     const hungerStatus = window.electron.getHunger();
@@ -27,12 +56,14 @@ window.addEventListener("DOMContentLoaded", () => {
       window.electron.reduceStimmung();
       window.electron.reduceSchlaf();
 
+      sterneAktualisieren("hunger");
+
       // Diese Werte könnten zum Beispiel in HTML-Elemente eingefügt werden
-      document.getElementById("hunger").innerText = `Hunger: ${hungerStatus}`;
+      document.getElementById("hunger").innerText = `${hungerStatus}`;
       document.getElementById(
         "stimmung"
-      ).innerText = `Stimmung: ${stimmungStatus}`;
-      document.getElementById("schlaf").innerText = `Schlaf: ${schlafStatus}`;
+      ).innerText = `${stimmungStatus}`;
+      document.getElementById("schlaf").innerText = ` ${schlafStatus}`;
 
       // Überprüfe, ob die Figur gestorben ist
       if (hungerStatus <= 0 || stimmungStatus <= 0 || schlafStatus <= 0) {
