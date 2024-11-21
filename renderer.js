@@ -1,4 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
+  var avatarBild = document.getElementById("avatar");
+
   function werdeAelter() {
     // Zugriff auf die exponierten Variablen aus preload.js
     const hungerStatus = window.electron.getHunger();
@@ -6,38 +8,61 @@ window.addEventListener("DOMContentLoaded", () => {
     const schlafStatus = window.electron.getSchlaf();
     const lebtStatus = window.electron.isAlive();
 
-    // Diese Werte könnten zum Beispiel in HTML-Elemente eingefügt werden
-    document.getElementById("hunger").innerText = ` ${hungerStatus}`;
-    document.getElementById("stimmung").innerText = ` ${stimmungStatus}`;
-    document.getElementById("schlaf").innerText = `${schlafStatus}`;
-    // document.getElementById('lebt').innerText = `${lebtStatus ? 'Ja' : 'Nein'}`;
-  }
-  const avatarBild = document.getElementById("avatar");
+    if (lebtStatus) {
+      window.electron.reduceHunger();
+      window.electron.reduceStimmung();
+      window.electron.reduceSchlaf();
+      // stimmung -= 1;
+      // schlaf -= 1;
 
-  // Falls du einen Button hast, um den Hunger zu verändern:
-  document.getElementById("fuetternButton").addEventListener("click", () => {
-    if (window.electron.isAlive() && !window.electron.getSchlaeft()) {
-      avatarBild.src = "images/essen.jpg"; // Bild für Füttern ändern
+      // if (hunger <= 0 || stimmung <= 0 || schlaf <= 0) {
+      //   lebt = false;
+      //   clearInterval(intervallID_verschlechtern);
+      //   clearInterval(intervallID_alter);
+      //   console.log("Die Figur ist gestorben.");
+      // }
+
+      // Diese Werte könnten zum Beispiel in HTML-Elemente eingefügt werden
+      document.getElementById("hunger").innerText = ` ${hungerStatus}`;
+      document.getElementById("stimmung").innerText = ` ${stimmungStatus}`;
+      document.getElementById("schlaf").innerText = `${schlafStatus}`;
+      // document.getElementById('lebt').innerText = `${lebtStatus ? 'Ja' : 'Nein'}`;
+
+      if (hungerStatus <= 0 || stimmungStatus <= 0 || schlafStatus <= 0) {
+        window.electron.toeten();
+        avatarBild.src = "images/tot.jpg"; // Bild für Füttern ändern
+
+        // clearInterval(intervallID_verschlechtern);
+        // clearInterval(intervallID_alter);
+
+        clearInterval(idInterval);
+        console.log("Die Figur ist gestorben.");
+      }
     }
 
-    document.getElementById("spielenButton").addEventListener("click", () => {
+    // Falls du einen Button hast, um den Hunger zu verändern:
+    document.getElementById("fuetternButton").addEventListener("click", () => {
       if (window.electron.isAlive() && !window.electron.getSchlaeft()) {
-        avatarBild.src = "images/spielen.jpg"; // Bild für Spielen ändern
+        window.electron.setHunger();
+        avatarBild.src = "images/essen.jpg"; // Bild für Füttern ändern
       }
+
+      document.getElementById("spielenButton").addEventListener("click", () => {
+        if (window.electron.isAlive() && !window.electron.getSchlaeft()) {
+          window.electron.setStimmung();
+          avatarBild.src = "images/spielen.jpg"; // Bild für Spielen ändern
+        }
+      });
+
+      document
+        .getElementById("schlafenButton")
+        .addEventListener("click", () => {
+          if (window.electron.isAlive() && !window.electron.getSchlaeft()) {
+            window.electron.setSchlaf(!window.electron.getSchlaeft());
+            avatarBild.src = "images/schlafen.jpg"; // Bild für Spielen ändern
+          }
+        });
     });
-
-    document.getElementById("schlafenButton").addEventListener("click", () => {
-      if (window.electron.isAlive() && !window.electron.getSchlaeft()) {
-        window.electron.setSchlaf(!window.electron.getSchlaf);
-        avatarBild.src = "images/schlafen.jpg"; // Bild für Spielen ändern
-      }
-    });
-  });
-
-
-  // Falls du einen Button hast, um den Hunger zu verändern:
-  document.getElementById("spielenButton").addEventListener("click", () => {
-    window.electron.setStimmung(2220); // Beispielwert
-  });
-  setInterval(werdeAelter, 222);
+  }
+  const idInterval = setInterval(werdeAelter, 123);
 });

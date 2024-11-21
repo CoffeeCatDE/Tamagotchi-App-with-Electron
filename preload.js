@@ -7,23 +7,9 @@ let schlaeft = false;
 let lebt = true;
 let startZeit = Date.now();
 let jahresDauer = 5000;
-let intervallID_verschlechtern = setInterval(zustandVerschlechtern, 500);
+// let intervallID_verschlechtern = setInterval(zustandVerschlechtern, 500);
 let intervallID_alter = setInterval(berechneJahre, jahresDauer);
 
-function zustandVerschlechtern() {
-  if (lebt) {
-    hunger -= 1;
-    stimmung -= 1;
-    schlaf -= 1;
-
-    if (hunger <= 0 || stimmung <= 0 || schlaf <= 0) {
-      lebt = false;
-      clearInterval(intervallID_verschlechtern);
-      clearInterval(intervallID_alter);
-      console.log("Die Figur ist gestorben.");
-    }
-  }
-}
 
 function berechneJahre() {
   if (lebt) {
@@ -41,14 +27,24 @@ contextBridge.exposeInMainWorld('electron', {
   lebtStatus: lebt,
   jahresDauer: jahresDauer,
 
+
+  toeten () {
+    hungerStatus = 0;
+    stimmungStatus = 0;
+    schlafStatus = 0;
+    lebtStatus = false;
+  },
   getHunger: () => hunger,
   getStimmung: () => stimmung,
   getSchlaf: () => schlaf,
   isAlive: () => lebt,
   setHunger: () => hunger+= 5,
-  setStimmung: () => stimmung+=10,
-  setSchlaf: (wert) => schlaf = !schlaf,
-  getSchlaeft: () => schlaeft,
+  reduceHunger: () => hunger -= 1,
+  reduceStimmung: () => stimmung -= 1,
+  reduceSchlaf: () => schlaf -= 1,
 
+  setStimmung: () => stimmung+=10,
+  setSchlaf: () => schlaf = !schlaf,
+  getSchlaeft: () => schlaeft,
   ipcRenderer: ipcRenderer
 });
