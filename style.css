@@ -21,8 +21,8 @@ button {
     font-size: 16px;
 }
 .feed-button { background-color: #4caf50; color: white; font-size: 30px;}
-.play-button { background-color: red; color: white; font-size: 30px; }
-.sleep-button { background-color: #2196f3; color: white; font-size: 30px; }
+.play-button { background-color: #cddb0c; color: white; font-size: 30px; }
+.sleep-button { background-color: #f32128; color: white; font-size: 30px; }
 #avatar {
     width: 400px;
     height: 400px;
