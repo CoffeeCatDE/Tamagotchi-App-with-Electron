@@ -32,8 +32,16 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
   function werdeAelter() {
+
+    var progressBar = document.getElementById("hunger");
+    progressBar.value = window.electron.getHunger();  // Setzt den Wert auf 75%
+
+    
     // Zugriff auf die exponierten Variablen aus preload.js
     const hungerStatus = window.electron.getHunger();
+
+
+
     const stimmungStatus = window.electron.getStimmung();
     // @todo 
     const schlafStatus = window.electron.getSchlafStatus();
@@ -59,7 +67,7 @@ window.addEventListener("DOMContentLoaded", () => {
       sterneAktualisieren("hunger");
 
       // Diese Werte könnten zum Beispiel in HTML-Elemente eingefügt werden
-      document.getElementById("hunger").innerText = `${hungerStatus}`;
+      // document.getElementById("hunger").innerText = `${hungerStatus}`;
       document.getElementById(
         "stimmung"
       ).innerText = `${stimmungStatus}`;

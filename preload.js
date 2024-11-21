@@ -29,12 +29,16 @@ contextBridge.exposeInMainWorld('electron', {
   getStimmung: () => stimmung,
   getSchlaeft: () => schlaeft,
   isAlive: () => lebt,
-  setHunger: () => hunger+= 5,
+  setHunger:() => {
+    hunger = Math.min(hunger+=10, 100);
+  },
   reduceHunger: () => hunger -= 1,
   reduceStimmung: () => stimmung -= 1,
   reduceSchlaf: () => schlafStatus -= 1,
 
-  setStimmung: () => stimmung+=10,
+  setStimmung: () => {
+    // stimmung = Math.min(stimmung+=10, 100);
+  },
   setSchlaf: () => schlafStatus += 100,
   getSchlaf: () => schlafStatus,
   getSchlafStatus: () => schlafStatus,
