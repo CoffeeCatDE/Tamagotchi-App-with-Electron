@@ -45,9 +45,10 @@ contextBridge.exposeInMainWorld('electron', {
   getStimmung: () => stimmung,
   getSchlaf: () => schlaf,
   isAlive: () => lebt,
-  setHunger: (wert) => hunger = wert,
-  setStimmung: (wert) => stimmung = wert,
-  setSchlaf: (wert) => schlaf = wert,
+  setHunger: () => hunger+= 5,
+  setStimmung: () => stimmung+=10,
+  setSchlaf: (wert) => schlaf = !schlaf,
+  getSchlaeft: () => schlaeft,
 
   ipcRenderer: ipcRenderer
 });
