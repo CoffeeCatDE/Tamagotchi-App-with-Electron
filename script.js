@@ -1,13 +1,15 @@
-const { app, BrowserWindow, document, path } = require('electron');
-const proc = require('node:child_process');
+const path = require('path');
+const { app, BrowserWindow, document } = require('electron');
 
-// Ensure that document manipulation is done after the DOM is fully loaded
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    lucy: "Lucy",
     webPreferences: {
-      preload: path?.join(__dirname, 'preload.js'),  // Use preload to secure communication if needed
+      preload: path.join(__dirname, 'preload.js'),  // Point to preload.js
+      nodeIntegration: false, // Ensuring that Node.js integration is not enabled directly in the renderer
+      contextIsolation: true, // Enabling context isolation for better security
     }
   });
 
@@ -22,23 +24,14 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
 });
 
+
 // Wait for the DOM to be fully loaded before accessing it
 document?.addEventListener('DOMContentLoaded', function () {
   // Now you can safely access DOM elements
   const avatarBild = document.getElementById('avatar');
   
   // Statuswerte des Tamagotchis
-  let hunger = 100;
-  let stimmung = 100;
-  let schlaf = 100;
-  let schlaeft = false;
-
-  let lebt = true;
-  let startZeit = Date.now(); // Aktuelle Zeit in Millisekunden
-  let jahresDauer = 500;
-  let intervallID_verschlechtern = setInterval(zustandVerschlechtern, 500);
-  let intervallID_alter = setInterval(berechneJahre, jahresDauer);
-
+  
   // Funktion zur Berechnung der vergangenen Jahre
   function berechneJahre() {
     if (lebt) {
