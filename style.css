@@ -1,8 +1,14 @@
+:root {
+    --color-progress-hunger: #56cb59; /* Stimmung - Gelb */
+    --color-progress-spielen: #af544c;  /* Spielen - Grün */
+    --color-progress-schlaf: rgb(94, 80, 248);     /* Schlaf - Rot */
+}
+
 body {
-    font-family: Arial, sans-serif;
     background-color: #d0ebff;
     text-align: center;
     padding: 0px;
+    font-family: "Comic Sans MS" !important;
 }
 #tamagotchi {
     background-color: #fff;
@@ -13,6 +19,8 @@ body {
     margin: auto;
 }
 button {
+    font-family: "Comic Sans MS" !important;
+    width: 30%;
     padding: 10px;
     margin: 5px;
     border: none;
@@ -20,13 +28,13 @@ button {
     cursor: pointer;
     font-size: 16px;
 }
-.feed-button { background-color: #4caf50; color: white; font-size: 30px;}
-.play-button { background-color: #cddb0c; color: white; font-size: 30px; }
-.sleep-button { background-color: #f32128; color: white; font-size: 30px; }
+.feed-button { background-color: var( --color-progress-hunger); color: white; font-size: 30px;}
+.play-button { background-color: var( --color-progress-spielen); color: white; font-size: 30px; }
+.sleep-button { background-color: var(--color-progress-schlaf); color: white; font-size: 30px; }
 #avatar {
-    width: 400px;
-    height: 400px;
-    margin-top: 10px;
+    width: 300px;
+    height: 300px;
+    margin-top: 0px;
 }
 .status {
     display: flex;
@@ -34,49 +42,61 @@ button {
     gap: 3px;
     margin-top: 5px;
 }
-.stern {
-    width: 50px;
-    height: 50px;
-}
 
-.test {
-    width: 400px;
-    height: 400px;
-    background: url("http://wallpapernesia.com/wp-content/uploads/2014/12/colorful_wallpaper_45_backgrounds-1024x576.jpg"), 
-      linear-gradient(0deg, black 0%, black 20%, white 80%, white 100%), 
-      url("http://wallpapernesia.com/wp-content/uploads/2014/12/colorful_wallpaper_45_backgrounds-1024x576.jpg"); 
-    background-position: 0px 0px;
-    background-size: cover, 100% 100%, cover;
-    background-blend-mode: luminosity, multiply;
-}
-
-:root  {
-    --color-progress-hunger: blue;
-    --color-progress-stimmung: yellow;
-    --color-progress-schlaf: red;
-}
-
-/* Styling für die progressbar */
+/* Allgemeines Styling für alle Progressbars */
 progress {
     width: 100%; /* Breite der Progressbar */
     height: 30px; /* Höhe der Progressbar */
     border-radius: 10px; /* Abrundung der Ecken */
-    background-color: var(--color-progress-hunger); /* Hintergrundfarbe */
+    background-color: #e0e0e0; /* Hintergrundfarbe der leeren Progressbar */
 }
 
 /* Pseudo-Element für den Fortschrittswert */
 progress::-webkit-progress-bar {
-    background-color: #e0e0e0; /* Hellerer Hintergrund für die leere Progressbar */
+    background-color: #e0e0e0; /* Hintergrundfarbe der leeren Progressbar */
     border-radius: 10px;
 }
 
-progress::-webkit-progress-value {
-    background-color: var(--color-progress-hunger); /* Blaue Farbe für den Fortschritt */
+/* Fortschrittswert für Hunger (blaue Farbe) */
+progress#hunger::-webkit-progress-value {
+    background-color: var(--color-progress-hunger); /* Blaue Farbe */
     border-radius: 10px;
 }
 
-/* Pseudo-Element für Firefox */
-progress::-moz-progress-bar {
-    background-color: var(--color-progress-hunger); /* Blaue Farbe für den Fortschritt */
+progress#hunger::-moz-progress-bar {
+    background-color: var(--color-progress-hunger); /* Blaue Farbe */
+    border-radius: 10px;
+}
+
+/* Fortschrittswert für Stimmung (gelbe Farbe) */
+progress#stimmung::-webkit-progress-value {
+    background-color: var(--color-progress-stimmung); /* Gelbe Farbe */
+    border-radius: 10px;
+}
+
+progress#stimmung::-moz-progress-bar {
+    background-color: var(--color-progress-stimmung); /* Gelbe Farbe */
+    border-radius: 10px;
+}
+
+/* Fortschrittswert für Schlaf (rote Farbe) */
+progress#schlaf::-webkit-progress-value {
+    background-color: var(--color-progress-schlaf); /* Rote Farbe */
+    border-radius: 10px;
+}
+
+progress#schlaf::-moz-progress-bar {
+    background-color: var(--color-progress-schlaf); /* Rote Farbe */
+    border-radius: 10px;
+}
+
+/* Fortschrittswert für Spielen (grüne Farbe) */
+progress#stimmung::-webkit-progress-value {
+    background-color: var(--color-progress-spielen); /* Grüne Farbe */
+    border-radius: 10px;
+}
+
+progress#stimmung::-moz-progress-bar {
+    background-color: var(--color-progress-spielen); /* Grüne Farbe */
     border-radius: 10px;
 }

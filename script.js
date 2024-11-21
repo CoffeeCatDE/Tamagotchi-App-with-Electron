@@ -3,15 +3,15 @@ const { app, BrowserWindow, document } = require('electron');
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    width: 1920,
-    height: 900,
+    width: 585,
+    height: 770,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),  // Point to preload.js
       nodeIntegration: false, // Ensuring that Node.js integration is not enabled directly in the renderer
       contextIsolation: true, // Enabling context isolation for better security
     }
   });
-win.webContents.openDevTools()
+// win.webContents.openDevTools()
   win.loadFile('index.html');
 };
 
