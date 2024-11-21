@@ -38,3 +38,14 @@ button {
     width: 50px;
     height: 50px;
 }
+
+.test {
+    width: 400px;
+    height: 400px;
+    background: url("http://wallpapernesia.com/wp-content/uploads/2014/12/colorful_wallpaper_45_backgrounds-1024x576.jpg"), 
+      linear-gradient(0deg, black 0%, black 20%, white 80%, white 100%), 
+      url("http://wallpapernesia.com/wp-content/uploads/2014/12/colorful_wallpaper_45_backgrounds-1024x576.jpg"); 
+    background-position: 0px 0px;
+    background-size: cover, 100% 100%, cover;
+    background-blend-mode: luminosity, multiply;
+}

@@ -85,6 +85,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if (window.electron.isAlive() && !window.electron.getSchlaeft()) {
       window.electron.setHunger(); // Setze den Hunger auf 100
       avatarBild.src = "images/essen.jpg"; // Bild für Füttern
+      // avatarBild.classList.add("test");
     }
   });
 

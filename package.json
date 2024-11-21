@@ -1,18 +1,34 @@
 {
-    "name": "tamagotchi-game",
-    "version": "1.0.11",
-    "description": "Ein Tamagotchi-Spiel mit Node.js und HTML/CSS/JavaScript",
-    "main": "script.js",
-    "scripts": {
-        "start": "electron ."
-    },
-    "author": "Christian Schade (coffeecatde)",
-    "license": "MIT",
-    "dependencies": {
-        "express": "^4.21.1"
-    },
-    "keywords": [],
-    "devDependencies": {
-        "electron": "^33.2.0"
+  "name": "tamagotchi-game",
+  "version": "1.0.11",
+  "description": "Ein Tamagotchi-Spiel mit Node.js und HTML/CSS/JavaScript",
+  "main": "script.js",
+  "config": {
+    "forge": {
+      "makers": [
+        {
+          "name": "@electron-forge/maker-dmg",
+          "platforms": [
+            "darwin"
+          ]
+        }
+      ]
     }
+  },
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "author": "Christian Schade (coffeecatde)",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.1"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@electron-forge/cli": "^7.5.0",
+    "@electron-forge/maker-dmg": "^7.5.0",
+    "electron": "^33.2.0"
+  }
 }
