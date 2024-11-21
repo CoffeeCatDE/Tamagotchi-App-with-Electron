@@ -33,15 +33,7 @@ document?.addEventListener('DOMContentLoaded', function () {
   // Statuswerte des Tamagotchis
   
   // Funktion zur Berechnung der vergangenen Jahre
-  function berechneJahre() {
-    if (lebt) {
-      let jetzt = Date.now(); // Aktuelle Zeit in Millisekunden
-      let vergangeneZeitInMillisekunden = jetzt - startZeit; // Unterschied in Millisekunden
 
-      let vergangeneSekunden = vergangeneZeitInMillisekunden / jahresDauer; // Umrechnung in Sekunden
-      document.getElementById('jahreAnzeige').textContent = vergangeneSekunden.toFixed(0); // Ausgabe mit 2 Dezimalstellen  
-    }
-  }
 
   // Funktion, um die Statussterne basierend auf dem Wert (0–100) zu aktualisieren
   function sterneAktualisieren(elementId, wert) {

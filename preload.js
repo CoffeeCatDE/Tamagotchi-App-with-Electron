@@ -6,7 +6,7 @@ let schlaf = 100;
 let schlaeft = false;
 let lebt = true;
 let startZeit = Date.now();
-let jahresDauer = 5000;
+let jahresDauer = 3000;
 // let intervallID_verschlechtern = setInterval(zustandVerschlechtern, 500);
 let intervallID_alter = setInterval(berechneJahre, jahresDauer);
 
@@ -25,6 +25,8 @@ contextBridge.exposeInMainWorld('electron', {
   schlafStatus: schlaf,
   schlaeftStatus: schlaeft,
   lebtStatus: lebt,
+  jahresDauer: jahresDauer,
+  startZeit: startZeit,
   jahresDauer: jahresDauer,
 
 
