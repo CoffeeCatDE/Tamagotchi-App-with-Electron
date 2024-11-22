@@ -13,6 +13,7 @@ JavaScript (valilla), Electron, Node, HTML5, CSS3
 
 ```
 git clone ...
+cd Tamagotchi-App-with-Electron
 npm install
 npm start 
 ````
