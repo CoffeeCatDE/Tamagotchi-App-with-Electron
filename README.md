@@ -12,7 +12,7 @@ JavaScript (valilla), Electron, Node, HTML5, CSS3
 ## Installation & Start
 
 ```
-git clone ...
+git clone https://github.com/CoffeeCatDE/Tamagotchi-App-with-Electron.git
 cd Tamagotchi-App-with-Electron
 npm install
 npm start 
